@@ -26,9 +26,28 @@ type Selected = {
 	}[]
 }
 
+const playlistClassiquesRapFr = {
+	label: "Classic French Rap",
+	id: "classiques-rap-fr",
+	content: [
+		{
+			id: "6vuh6EWXJGR6bg9QBLkM09",
+			label: "Les classiques du rap français",
+		},
+		{
+		id: "35dSNJxMuPV916MajOnNCq",
+		label: "Rap Français Classique",
+		},
+
+		
+	],
+}
+
+
+
 const playlistsRapFr = {
-	label: "Rap Français",
-	id: "rap-fr",
+	label: "Recent releases",
+	id: "new-releases",
 	content: [
 		{
 			id: "298rv22FYrjBdEuZBB0upz",
@@ -53,7 +72,7 @@ const playlistsRapFr = {
 	],
 }
 
-const genres = [playlistsRapFr]
+const genres = [playlistsRapFr, playlistClassiquesRapFr]
 
 export default function Page() {
 	const [openGenreCombo, setOpenGenreCombo] = useState(false)
@@ -75,7 +94,7 @@ export default function Page() {
 			return false
 		}
 
-		const { data, error } = await getTracks({ list: playlistsRapFr.content })
+		const { data, error } = await getTracks({ list: genre.content, length: 10 })
 		if (error) {
 			toast.error("Failed to fetch tracks")
 			return false
@@ -127,6 +146,7 @@ export default function Page() {
 
 	if (isGameStarted && !isGameFinished && !isCounterStarted && !isLoading) {
 		// return <code className="h-full overflow-scroll">{JSON.stringify(tracks, null, 2)}</code>
+		
 		return (
 			<>
 				<div className="w-full ">
@@ -139,7 +159,7 @@ export default function Page() {
 						</Button>
 					</ConfirmAction>
 				</div>
-				<Player tracks={tracks} className="pt-10" />
+				<Player tracks={tracks} className="pt-10" setIsGameFinished={setIsGameFinished} />
 			</>
 		)
 	}
@@ -237,7 +257,7 @@ function List({ dataList, setOpen, setSelected }: { dataList: Selected[]; setOpe
 			<CommandList>
 				<CommandEmpty>No results found.</CommandEmpty>
 				<CommandGroup>
-					{genres.map((genre) => (
+					{dataList.map((genre) => (
 						<CommandItem
 							key={genre.id}
 							value={genre.id}
