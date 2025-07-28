@@ -1,5 +1,5 @@
 "use client"
-import { getTracks } from "@/app/function/spotify/getTracks"
+import { getTracks } from "@/app/function/itunes/getTracks"
 import ConfirmAction from "@/components/modal/confirm-action"
 import Player from "@/components/player/player"
 import { Button } from "@/components/ui/button"
@@ -27,16 +27,16 @@ type Selected = {
 }
 
 const playlistClassiquesRapFr = {
-	label: "Classic French Rap",
+	label: "Eminem",
 	id: "classiques-rap-fr",
 	content: [
 		{
-			id: "6vuh6EWXJGR6bg9QBLkM09",
-			label: "Les classiques du rap français",
+			id: "",
+			label: "Eminem",
 		},
 		{
-		id: "35dSNJxMuPV916MajOnNCq",
-		label: "Rap Français Classique",
+		id: "",
+		label: "Eminem",
 		},
 
 		
@@ -46,31 +46,20 @@ const playlistClassiquesRapFr = {
 
 
 const playlistsRapFr = {
-	label: "Recent releases",
-	id: "new-releases",
+	label: "Britney Spears",
+	id: "britney-spears",
 	content: [
 		{
-			id: "298rv22FYrjBdEuZBB0upz",
-			label: "Nouveautés Rap Français 2024",
+			id: "",
+			label: "Britney Spears",
 		},
 		{
-			id: "3aj8I39Ok1hAmzRDJ0KYPH",
-			label: "Top 100 Rap Français du moment",
-		},
-		{
-			id: "0MF1XGKzqqeL0ZHeqMrq7R",
-			label: "Rap Fr | Rap Francias 2024 | Hits Rap Kaaris, Vacra, PLK...",
-		},
-		{
-			id: "7ooPflyw165M9uFbQvVKf1",
-			label: "Revrse FR",
-		},
-		{
-			id: "2hOAwbX7PyRrbDQ5mjrd8T",
-			label: "Best of Rap Français",
+			id: "",
+			label: "Britney Spears",
 		},
 	],
 }
+
 
 const genres = [playlistsRapFr, playlistClassiquesRapFr]
 

@@ -44,7 +44,6 @@ export default function Player({ tracks, className, setIsGameFinished }: PlayerP
 		}
 		const currentIndex = tracks.indexOf(currentTrack)
 		const nextTrack = tracks[currentIndex + 1]
-		console
 
 		if (nextTrack) {
 			setTrackSelected(nextTrack)
