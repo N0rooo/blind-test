@@ -39,8 +39,9 @@ export default function Page() {
 							<CardDescription>Choose your countdown, select your favorite artist and find as many of his songs as possible. Prove that you are the best fan ever!</CardDescription>
 						</CardHeader>
 						<CardFooter>
-							<Button variant={"gradient"} onClick={() => router.push("app/game/iamtheone")}>
-								Choose the IAmTheOne game
+							<Button disabled variant={"gradient"} onClick={() => router.push("app/game/iamtheone")}>
+								{/* Choose the IAmTheOne game */}
+								Coming soon
 							</Button>
 						</CardFooter>
 					</Card>
@@ -52,8 +53,9 @@ export default function Page() {
 							<CardDescription>Challenge your friends in a 1v1. You will have to guess the song and the artist with only a few seconds of the song. The first to guess the song wins the round. The first to win 5 rounds wins the game!</CardDescription>
 						</CardHeader>
 						<CardFooter>
-							<Button variant={"gradient"} onClick={() => router.push("app/game/1v1")}>
-								Choose the 1v1 game
+							<Button disabled variant={"gradient"} onClick={() => router.push("app/game/1v1")}>
+								{/* Choose the 1v1 game */}
+								Coming soon
 							</Button>
 						</CardFooter>
 					</Card>

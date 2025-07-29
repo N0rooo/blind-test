@@ -1,5 +1,4 @@
 import ITunes from "@/components/svg/itunes"
-import iTunes from "@/components/svg/itunes"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
 
@@ -26,8 +25,8 @@ const NotConnected = () => {
 			<Separator className="bg-gradient-to-r from-indigo-400 to-cyan-400" />
 			<div className="flex items-end gap-x-4 pt-4">
 				<p className="text-foreground">via</p>
-				<ITunes width={100} height={"auto"} className="fill-foreground" />
-			</div>
+				<ITunes className="w-10 h-10" />
+				</div>
 			<Link className="text-foreground hover:scale-105 transition-transform hover:transition-colors hover:text-transparent mt-4 hover:bg-gradient-to-r hover:from-indigo-400 bg-clip-text hover:to-cyan-400" href={"/login"}>
 				Connect to the app
 			</Link>

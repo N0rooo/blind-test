@@ -34,9 +34,9 @@ export default function Login() {
 			<div className="grid gap-2">
 				<div className="flex items-center">
 					<Label htmlFor="password">Password</Label>
-					<Link href="#" className="ml-auto inline-block text-sm underline">
+					{/* <Link href="#" className="ml-auto inline-block text-sm underline">
 						Forgot password ?
-					</Link>
+					</Link> */}
 				</div>
 				<Input name="password" id="password" type="password" placeholder="••••••••••••••••" required />
 			</div>
