@@ -1,5 +1,6 @@
 "use client"
 import { getTracks } from "@/app/function/itunes/getTracks"
+import { allRapFrenchLists, type RapList } from "@/app/function/itunes/rapFrenchLists"
 import ConfirmAction from "@/components/modal/confirm-action"
 import Player from "@/components/player/player"
 import { Button } from "@/components/ui/button"
@@ -26,42 +27,22 @@ type Selected = {
 	}[]
 }
 
-const playlistClassiquesRapFr = {
-	label: "Eminem",
-	id: "classiques-rap-fr",
-	content: [
-		{
-			id: "",
-			label: "Eminem",
-		},
-		{
-		id: "",
-		label: "Eminem",
-		},
+// Conversion des listes de rap français en format compatible
+const recentRapFr = {
+	label: "Recent French Rap",
+	id: "rap-fr-recent",
+	content: allRapFrenchLists.recent
+}
 
-		
-	],
+const classicRapFr = {
+	label: "Classic French Rap",
+	id: "rap-fr-classic", 
+	content: allRapFrenchLists.classic
 }
 
 
 
-const playlistsRapFr = {
-	label: "Britney Spears",
-	id: "britney-spears",
-	content: [
-		{
-			id: "",
-			label: "Britney Spears",
-		},
-		{
-			id: "",
-			label: "Britney Spears",
-		},
-	],
-}
-
-
-const genres = [playlistsRapFr, playlistClassiquesRapFr]
+const genres = [recentRapFr, classicRapFr]
 
 export default function Page() {
 	const [openGenreCombo, setOpenGenreCombo] = useState(false)

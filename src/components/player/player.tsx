@@ -272,11 +272,11 @@ export default function Player({ tracks, className, setIsGameFinished }: PlayerP
 					<Input ref={inputUser} disabled={hasLose} name="name" onChange={cryptUserInput} />
 				</CardContent>
 				<CardFooter className="flex justify-between">
-					<Button disabled={!isCorrect} onClick={isLastTrack ?  () => setIsGameFinished(true) : nextAudio }>
-						{isLastTrack ? "Finish" : "Next"}
-					</Button>
 					<Button variant={"ghost"} disabled={isCorrect} onClick={revealAnswer}>
 						Reveal
+					</Button>
+					<Button disabled={!isCorrect} onClick={isLastTrack ?  () => setIsGameFinished(true) : nextAudio }>
+						{isLastTrack ? "Finish" : "Next"}
 					</Button>
 				</CardFooter>
 			</Card>

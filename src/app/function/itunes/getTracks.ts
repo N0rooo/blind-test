@@ -11,9 +11,14 @@ export async function getTracks({ list, length = 20 }: { list: List[]; length?: 
 		// iTunes Search API ne nécessite pas d'authentification
 		// Nous allons utiliser les genres comme termes de recherche
 		const tracksPromises = list.map(async (item) => {
-			const response = await fetch(
-				`https://itunes.apple.com/search?term=${encodeURIComponent(item.label)}&media=music&entity=song&limit=50&country=FR`
-			)
+			// Utiliser artistTerm pour les artistes spécifiques, sinon recherche générale
+			const isArtist = item.label.includes("rap") || item.label.includes("hip-hop") || item.label.includes("trap") || item.label.includes("drill") || item.label.includes("90s") || item.label.includes("2000s") || item.label.includes("2024") || item.label.includes("old school") || item.label.includes("général")
+			
+			const searchUrl = isArtist 
+				? `https://itunes.apple.com/search?term=${encodeURIComponent(item.label)}&media=music&entity=song&limit=50&country=FR`
+				: `https://itunes.apple.com/search?term=${encodeURIComponent(item.label)}&media=music&entity=song&attribute=artistTerm&limit=50&country=FR`
+			
+			const response = await fetch(searchUrl)
 			
 			if (!response.ok) {
 				console.log("Failed to fetch tracks from iTunes")
@@ -32,11 +37,20 @@ export async function getTracks({ list, length = 20 }: { list: List[]; length?: 
 			index === self.findIndex((t) => t.trackId === track.trackId)
 		)
 
-		// Trier par popularité (basé sur le prix ou la disponibilité de preview)
+		// Trier par popularité (amélioré)
 		trackWithoutDuplicate.sort((a: any, b: any) => {
 			// Prioriser les tracks avec preview_url
 			if (a.previewUrl && !b.previewUrl) return -1
 			if (!a.previewUrl && b.previewUrl) return 1
+			
+			// Ensuite trier par prix (indicateur de popularité)
+			if (a.trackPrice > b.trackPrice) return -1
+			if (a.trackPrice < b.trackPrice) return 1
+			
+			// Enfin par date de sortie (plus récent en premier)
+			if (a.releaseDate > b.releaseDate) return -1
+			if (a.releaseDate < b.releaseDate) return 1
+			
 			return 0
 		})
 
